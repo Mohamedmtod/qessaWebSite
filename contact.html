@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QESSA - تواصل معنا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=1.1">
+    <link rel="stylesheet" href="css/components.css?v=1.1">
+    <link rel="stylesheet" href="css/pages.css?v=1.1">
+    <style>
+        .contact-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Sweet subtle glow effect */
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 162, 77, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--brand);
+        }
+
+        .contact-title {
+            font-size: 1.25rem;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .contact-text {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Modern Modern Buttons */
+        .btn-modern {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 280px;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+            transform: scale(1.02);
+        }
+
+        /* Location Button */
+        .btn-location {
+            background: linear-gradient(135deg, var(--card-hover) 0%, #222 100%);
+            color: var(--brand);
+            border: 1px solid var(--border);
+        }
+
+        .btn-location:hover {
+            border-color: var(--brand);
+            background: var(--bg);
+            box-shadow: 0 0 15px rgba(201, 162, 77, 0.2);
+            color: var(--brand-gold);
+        }
+
+        /* Phone List */
+        .phone-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .phone-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: var(--text);
+            font-family: monospace;
+            font-size: 1.1rem;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .phone-item:hover {
+            border-color: var(--brand-sec);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--brand);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x-root">
+        <header class="x-head"></header>
+
+        <main>
+            <div class="text-center mt-4">
+                <h1 style="color:var(--brand); margin-bottom: 8px;">تواصل معنا</h1>
+                <p style="color:var(--text-dim);">نحن هنا لمساعدتك والإجابة على استفساراتك</p>
+            </div>
+
+            <div class="contact-container">
+                <!-- Location Section -->
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">موقعنا</h3>
+                    <p class="contact-text">تفضل بزيارتنا في فرعنا بالسويس</p>
+                    <a href="https://maps.app.goo.gl/gct74ihrMWGKGNx76?g_st=ic" target="_blank" rel="noopener"
+                        class="btn-modern btn-location">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        عرض الموقع في السويس
+                    </a>
+                </div>
+
+                <!-- WhatsApp Section -->
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3 class="contact-title">واتساب</h3>
+                    <p class="contact-text">تواصل معنا مباشرة عبر واتساب لخدمة أسرع</p>
+                    <a href="https://wa.me/201068430400" target="_blank" rel="noopener" class="btn-modern btn-whatsapp">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        تواصل عبر واتساب
+                    </a>
+                </div>
+
+                <!-- Phones Section -->
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3 class="contact-title">أرقام التواصل</h3>
+                    <p class="contact-text">يمكنك الاتصال بنا على الأرقام التالية</p>
+                    <div class="phone-list">
+                        <a href="tel:01068430400" class="phone-item">01068430400</a>
+                        <a href="tel:01279269569" class="phone-item">01279269569</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-4">
+            <p style="color:var(--text-dim); font-size:12px;">جميع الحقوق محفوظة © QESSA 2025</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/dataSource.js?v=1.1"></script>
+    <script src="js/favorites.js?v=1.1"></script>
+    <script src="js/cart.js?v=1.1"></script>
+    <script src="js/utils.js?v=1.1"></script>
+    <script src="js/pricing.js?v=1.1"></script>
+    <script src="js/carousel.js?v=1.1"></script>
+    <script src="js/whatsapp.js?v=1.1"></script>
+    <script src="js/render.js?v=1.1"></script>
+    <script src="js/app.js?v=1.1"></script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QESSA - المفضلة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=1.1">
+    <link rel="stylesheet" href="css/components.css?v=1.1">
+    <link rel="stylesheet" href="css/pages.css?v=1.1">
+</head>
+
+<body data-category="favorites">
+    <div class="x-root">
+        <header class="x-head"></header>
+        <main>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-dim">قائمتي المفضلة ❤️</h2>
+            </div>
+
+            <div id="product-grid" class="x-grid">
+                <p class="text-center" style="grid-column: 1/-1; padding: 40px; color: var(--text-dim);">جار التحميل...
+                </p>
+            </div>
+        </main>
+        <footer class="text-center mt-4">
+            <p style="color:var(--text-dim); font-size:12px;">جميع الحقوق محفوظة © QESSA 2025</p>
+        </footer>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script type="module" src="js/dataSource.js?v=1.1"></script>
+    <script src="js/favorites.js?v=1.1"></script>
+    <script src="js/cart.js?v=1.1"></script> <!-- Load Favorites Logic -->
+    <script src="js/utils.js?v=1.1"></script>
+    <script src="js/pricing.js?v=1.1"></script>
+    <script src="js/carousel.js?v=1.1"></script>
+    <script src="js/whatsapp.js?v=1.1"></script>
+    <script src="js/render.js?v=1.1"></script>
+
+    <!-- Custom Init for Favorites Page -->
+    <script type="module">
+        // We replicate app.js init logic but filtered
+        async function initFavorites() {
+            renderNav();
+
+            // Wait for window.DataSource to be available if needed (it should be since it's loaded before)
+            // But since dataSource.js is type="module", it might defer.
+            // Check if window.DataSource is ready, or wait a bit.
+
+            // However, script type="module" are deferred by default.
+            // But inline module script also deferred.
+            // Let's rely on event loop or simple checking.
+
+            try {
+                if (!window.DataSource) {
+                    // Fallback or wait? 
+                    // Since dataSource.js assigns window.DataSource synchronously when executed,
+                    // and it is imported as module earlier, it should be fine.
+                    // Actually, module scripts run deferred.
+                    // Let's ensure we access it safely.
+                }
+
+                const allProducts = await window.DataSource.getProducts('all');
+                window.PRODUCTS = allProducts;
+
+                const favIds = window.Favorites.getFavorites();
+
+                if (favIds.length === 0) {
+                    document.getElementById('product-grid').innerHTML = `
+                        <p class="text-center" style="grid-column: 1/-1; padding: 40px; color: var(--text-dim); font-size:1.2rem;">
+                            لسه مفيش منتجات في المفضلة ❤️
+                            <br>
+                            <a href="index.html" class="x-btn-secondary" style="margin-top:20px; font-size:0.9rem;">تصفح المنتجات</a>
+                        </p>
+                     `;
+                    return;
+                }
+
+                const favItems = allProducts.filter(p => favIds.includes(p.id));
+
+                if (favItems.length === 0) {
+                    // IDs exist but products not found
+                    document.getElementById('product-grid').innerHTML = `
+                        <p class="text-center" style="grid-column: 1/-1; padding: 40px; color: var(--text-dim);">لم يتم العثور على المنتجات.</p>
+                     `;
+                } else {
+                    renderProductList('product-grid', favItems);
+                }
+
+            } catch (e) {
+                console.error(e);
+                document.getElementById('product-grid').innerHTML = '<p class="text-center" style="color:red">حدث خطأ في تحميل البيانات</p>';
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFavorites);
+        } else {
+            initFavorites();
+        }
+    </script>
+</body>
+
+</html>

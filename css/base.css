@@ -1,0 +1,175 @@
+:root {
+  /* Luxury Dark Palette */
+  --bg: #0B0B0B;
+  /* Deep Black */
+  --card: #121212;
+  /* Soft Black */
+  --card-hover: #1A1A1A;
+  /* Slightly lighter for hover */
+
+  /* Gold Accents */
+  --brand: #C9A24D;
+  /* Primary Gold */
+  --brand-sec: #8A6F3D;
+  /* Darker Gold/Bronze */
+  --brand-glow: rgba(201, 162, 77, 0.3);
+
+  /* Text Colors */
+  --text: #F5F5F5;
+  /* Off-white for readability */
+  --text-dim: #B3B3B3;
+  /* Muted Grey */
+  --text-gold: #E5C579;
+  /* Light Gold for highlights */
+
+  /* UI Elements */
+  --chip: #1F1F1F;
+  --ring: #333333;
+  --border: #2A2A2A;
+
+  /* Layout & Spacing */
+  --r: 8px;
+  /* Sharper, more elegant radius */
+  --gap: 20px;
+
+  /* Shadows */
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  --shadow-gold: 0 0 15px rgba(201, 162, 77, 0.15);
+
+  /* Typography */
+  --font-main: 'Tajawal', sans-serif;
+  --font-heading: 'Tajawal', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  /* Prevent horizontal scroll from hero bleed */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  direction: rtl;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  /* Example adjustment, assuming default was larger */
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  /* Slightly smaller but readable on mobile */
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.x-root {
+  max-width: 1400px;
+  /* Wider for luxury feel */
+  margin: 0 auto;
+  padding: 0;
+  background: var(--bg);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(201, 162, 77, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(201, 162, 77, 0.03) 0%, transparent 40%);
+}
+
+main {
+  padding: 10px;
+}
+
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Elegant Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-sec);
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <script>
+    window.APP_VERSION = "21";
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QESSA - قصة للعطور</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css?v=1.1">
+  <link rel="stylesheet" href="css/components.css?v=1.1">
+  <link rel="stylesheet" href="css/pages.css?v=1.1">
+</head>
+
+<body>
+  <div class="x-root">
+    <header class="x-head"></header>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="x-hero">
+        <div class="x-hero-content">
+          <h1 class="x-hero-title">عطور تروي حكايتك</h1>
+          <p class="x-hero-subtitle">اكتشف مجموعتنا الحصرية من العطور الفاخرة التي تميز حضورك.</p>
+          <div class="x-hero-actions">
+            <a href="categoryPage.html" class="x-btn-primary">استعرض المجموعة</a>
+            <a href="contact.html" class="x-btn-secondary">تواصل معنا</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Favorites Filter Toggle -->
+      <div id="fav-filter-container" class="text-center">
+        <button id="toggle-fav-filter" class="fav-filter-btn">
+          عرض المفضلة فقط ❤️
+        </button>
+      </div>
+
+      <!-- Categories moved to categoryPage.html -->
+
+
+
+
+    </main>
+
+    <footer class="text-center mt-4">
+      <p style="color:var(--text-dim); font-size:12px;">جميع الحقوق محفوظة © QESSA 2025</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/dataSource.js?v=1.1"></script>
+  <script src="js/favorites.js?v=1.1"></script>
+  <script src="js/cart.js?v=1.1"></script>
+  <script src="js/utils.js?v=1.1"></script>
+  <script src="js/pricing.js?v=1.1"></script>
+  <script src="js/carousel.js?v=1.1"></script>
+  <script src="js/whatsapp.js?v=1.1"></script>
+  <script src="js/render.js?v=1.1"></script>
+  <script src="js/app.js?v=1.1"></script>
+
+  <!-- Dynamic Cache Busting -->
+  <script>
+    (function () {
+      var v = window.APP_VERSION;
+      if (!v) return;
+
+      function updateUrl(url) {
+        if (!url || url.startsWith('http') || url.startsWith('//') || url.includes('data:')) return url;
+        if (url.includes('?v=')) return url;
+        var separator = url.includes('?') ? '&' : '?';
+        return url + separator + 'v=' + v;
+      }
+
+      // 1. Update CSS (Forces reload)
+      var links = document.querySelectorAll('link[rel="stylesheet"]');
+      links.forEach(function (link) {
+        var newHref = updateUrl(link.getAttribute('href'));
+        if (newHref !== link.getAttribute('href')) {
+          link.href = newHref;
+        }
+      });
+
+      // 2. Update Scripts
+      // Note: Changing src on existing script tag doesn't always trigger re-execution.
+      // But for modules and deferred scripts, if caught early, it works.
+      // We will clone and replace to guarantee fetch of new version.
+      var scripts = document.querySelectorAll('script[src]');
+      scripts.forEach(function (script) {
+        var src = script.getAttribute('src');
+        var newSrc = updateUrl(src);
+        if (newSrc !== src) {
+          // Create replacement
+          var newScript = document.createElement('script');
+          newScript.src = newSrc;
+          if (script.type) newScript.type = script.type;
+          if (script.defer) newScript.defer = true;
+          if (script.async) newScript.async = true;
+
+          // Replace
+          script.parentNode.replaceChild(newScript, script);
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

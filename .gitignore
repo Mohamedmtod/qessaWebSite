@@ -1,0 +1,16 @@
+# Ignore admin & internal folders
+dashboard/
+scripts/
+settings/
+
+# Node / tools
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets (important)
+*.json
+!package.json
+!firebase.json
